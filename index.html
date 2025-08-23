@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Weather App — Abdeladim</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="main.js" defer></script>
+
+</head>
+<body class="w-full h-full bg-no-repeat bg-cover bg-center min-h-screen bg-[url(img/bg-img.png)] text-white selection:bg-cyan-300 selection:text-slate-900">
+  <header class="border-b border-white/10 bg-white/5 backdrop-blur sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-wrap gap-3 items-center justify-between">
+      <img src="img/logo.png" alt="Weather App Logo" class="h-20 w-20"/>
+      <div class="flex gap-2 w-full sm:w-auto">
+        <div class="relative flex-1 min-w-[220px]">
+          <input id="cityInput" type="text" placeholder="Search city (e.g., Casablanca)"
+                 class="w-full rounded-lg bg-white/10 border border-white/20 px-3 py-2 outline-none focus:ring-2 focus:ring-cyan-400 placeholder-white/60">
+          <!-- autosuggest -->
+          <div id="suggestBox" class="absolute inset-x-0 top-full mt-1 bg-white/95 text-slate-800 rounded-lg shadow-lg hidden max-h-64 overflow-auto"></div>
+        </div>
+        <button id="locBtn" class="shrink-0 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m7-7h2M3 12H1m15.364-6.364l1.414 1.414M6.222 17.778l-1.414 1.414M18 12a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+          Use my location
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Status / errors -->
+    <div id="status" class="hidden mb-4 text-sm"></div>
+
+    <!-- Current conditions -->
+    <section id="current" class="hidden rounded-xl bg-white/5 border border-white/10 p-5">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div id="currentIcon" class="w-14 h-14"></div>
+          <div>
+            <h2 id="place" class="text-xl font-semibold"></h2>
+            <div id="localTime" class="text-white/70 text-sm"></div>
+          </div>
+        </div>
+        <div class="flex items-end gap-6">
+          <div>
+            <div id="temp" class="text-4xl font-extrabold"></div>
+            <div class="text-white/70 text-sm">Feels like <span id="apparent"></span></div>
+          </div>
+          <div class="text-sm text-white/80">
+            <div>Humidity: <span id="humidity"></span></div>
+            <div>Wind: <span id="wind"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6-day forecast -->
+    <section id="forecast" class="hidden mt-6">
+      <h2 class="mb-3 text-lg font-semibold text-white">Next 6 Days</h3>
+      <div id="days" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"></div>
+    </section>
+
+    <!-- Footer tip -->
+    <footer class="mt-12 border-t border-white/10 bg-white/5 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/70 text-sm">
+      
+      <!-- Left: copyright -->
+      <p class="text-center sm:text-left">
+        © <span id="year"></span> Weather App — Built by Abdeladim Bouita
+      </p>
+
+      <!-- Right: links -->
+      <div class="flex gap-4">
+        <a href="https://open-meteo.com/" target="_blank" class="hover:text-cyan-300 transition">API</a>
+        <a href="https://abdeladim91.github.io/Portfolio/" class="hover:text-cyan-300 transition">About</a>
+        <a href="https://abdeladim91.github.io/Portfolio/" class="hover:text-cyan-300 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+  </main>
+</body>
+</html>
